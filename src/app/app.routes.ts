@@ -5,12 +5,8 @@ export const routes: Routes = [
   {
     path: 'usuarios', component:UsuarioComponent,
     children:[
-      {
-        path: 'crear', component: CreaeditausuarioComponent
-      },
-      {
-        path: 'editar/:id', component: CreaeditausuarioComponent
-      }
+      {path: 'crear', component: CreaeditausuarioComponent},
+      {path: 'editar/:id', component: CreaeditausuarioComponent}
     ]
   }
 ];
