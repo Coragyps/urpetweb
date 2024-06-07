@@ -4,46 +4,50 @@
     </div>
     <form [formGroup]="form" (submit)="aceptar()">
 
-        <mat-form-field appearance="outline" *ngIf="edicion">
+        <mat-form-field *ngIf="edicion">
 			<mat-label>Codigo</mat-label>
 			<input matInput formControlName="codigo" readonly>
 		</mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field>
 			<mat-label>Usuario</mat-label>
-			<input matInput formControlName="usuario">
+			<input matInput formControlName="usuario" [readonly]="edicion">
+			<mat-error *ngIf="form.get('usuario')?.hasError('required')">El usuario es requerido</mat-error>
+            <mat-error *ngIf="form.get('usuario')?.hasError('usernameTaken')">El nombre de usuario ya está en uso</mat-error>
 		</mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field>
 			<mat-label>Contraseña</mat-label>
 			<input matInput formControlName="contrasena" [type]="oculto ? 'password' : 'text'">
 			<button mat-icon-button matSuffix type="button" (click)="verContrasena($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="oculto">
 				<mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
 			</button>
+			<mat-error *ngIf="form.get('contrasena')?.hasError('required')">La contraseña es requerida</mat-error>
 		</mat-form-field>
 
-        <mat-slide-toggle *ngIf="edicion" formControlName="habilitado" [checked]="form.get('habilitado')?.value">Habilitado</mat-slide-toggle>
-
-        <mat-form-field appearance="outline">
+        <mat-form-field>
 			<mat-label>Nombre</mat-label>
 			<input matInput formControlName="nombre">
+			<mat-error *ngIf="form.get('nombre')?.hasError('required')">El nombre es requerido</mat-error>
 		</mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field>
 			<mat-label>Telefono</mat-label>
 			<input matInput formControlName="telefono">
+			<mat-error *ngIf="form.get('telefono')?.hasError('required')">El teléfono es requerido</mat-error>
 		</mat-form-field>
 
-		<mat-form-field appearance="outline" *ngIf="edicion">
+		<mat-form-field *ngIf="edicion">
 			<mat-label>Correo</mat-label>
 			<input matInput formControlName="correo">
 		</mat-form-field>
 
-        <mat-form-field appearance="outline" *ngIf="edicion">
+        <mat-form-field *ngIf="edicion">
 			<mat-label>Foto</mat-label>
 			<input matInput formControlName="foto">
 		</mat-form-field>
 
+		<mat-slide-toggle *ngIf="edicion" formControlName="habilitado" [checked]="form.get('habilitado')?.value">Habilitado</mat-slide-toggle>
         
         <button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
 		<button mat-fab extended color="warn" routerLink="/usuarios"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>

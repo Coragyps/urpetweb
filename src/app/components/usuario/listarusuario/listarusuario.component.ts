@@ -47,7 +47,7 @@ export class ListarusuarioComponent implements OnInit{
       this.uS.eliminar(id).subscribe((data) => {
         this.uS.list().subscribe((data) => {
           this.uS.setList(data);
-          this.snackBar.open('Se elimino el Registro', '', {duration: 3000,})
+          this.snackBar.open('Se eliminó el Registro', '', {duration: 3000,})
         });
       });
     }

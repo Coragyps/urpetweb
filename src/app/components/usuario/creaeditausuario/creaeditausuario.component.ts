@@ -67,7 +67,7 @@ export class CreaeditausuarioComponent implements OnInit{
     if (this.form.valid) {
       const username = this.form.value.usuario;
       this.uS.existsByUsername(username).subscribe((exists: boolean) => {
-        if (exists) {
+        if (exists && !this.edicion) {
           this.form.controls['usuario'].setErrors({ usernameTaken: true });
           this.snackBar.open('El nombre de usuario ya está en uso', '', { duration: 3000 });
         } else {
