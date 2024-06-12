@@ -1,9 +1,30 @@
-<mat-toolbar color="primary">
-  <button mat-button [matMenuTriggerFor]="menuUrpet"><mat-icon>person</mat-icon>Usuarios</button>
+<mat-toolbar color="primary" *ngIf="verificar()">
+  <button mat-button [routerLink]="['/homes']">
+    <mat-icon>home</mat-icon>Home
+  </button>
+
+  <button mat-button [matMenuTriggerFor]="menuUrpet" *ngIf ="isAdmin()">
+    <mat-icon>person</mat-icon>
+    Usuarios
+  </button>
+  
+  <button mat-button [matMenuTriggerFor]="menuSalir"><mat-icon>person</mat-icon>
+    Usuario</button>
 </mat-toolbar>
 
 <mat-menu #menuUrpet="matMenu">
   <button mat-menu-item routerLink="/usuarios"><mat-icon>format_list_numbered</mat-icon>Listar</button>
   <button mat-menu-item routerLink="/usuarios/crear"><mat-icon>add</mat-icon>Registrar</button>
+</mat-menu>
+
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
 </mat-menu>
 <router-outlet></router-outlet>
