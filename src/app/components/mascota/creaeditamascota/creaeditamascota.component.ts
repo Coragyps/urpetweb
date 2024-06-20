@@ -89,7 +89,7 @@ export class CreaeditamascotaComponent implements OnInit{
       this.mascota.mascotaTamaño=this.form.value.tamano
       this.mascota.mascotaHabilitado=this.form.value.habilitado
       this.mascota.usuario.usuarioId=this.form.value.usuario
-      if (!this.form.value.foto) {this.mascota.mascotaFoto = 'assets/img/petpic.jpg';}
+      if (!this.form.value.foto) {this.mascota.mascotaFoto = 'assets/res/petpic.jpg';}
       this.mS.insert(this.mascota).subscribe((data)=>{
         this.mS.list().subscribe((data)=>{
           this.mS.setList(data)

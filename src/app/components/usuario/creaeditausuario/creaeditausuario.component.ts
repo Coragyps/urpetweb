@@ -69,7 +69,7 @@ export class CreaeditausuarioComponent implements OnInit{
           this.usuario.usuarioTelefono = this.form.value.telefono;
           this.usuario.usuarioCorreo = this.form.value.correo;
           this.usuario.usuarioFoto = this.form.value.foto;
-          if (!this.form.value.foto) {this.usuario.usuarioFoto = 'assets/img/userpic.jpg';}
+          if (!this.form.value.foto) {this.usuario.usuarioFoto = 'assets/res/userpic.jpg';}
           this.uS.insert(this.usuario).subscribe(() => {
             this.uS.list().subscribe((data) => {
               this.uS.setList(data);
