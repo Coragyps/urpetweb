@@ -7,7 +7,7 @@ import { ListarusuarioComponent } from './listarusuario/listarusuario.component'
   standalone: true,
   imports: [RouterOutlet, ListarusuarioComponent],
   templateUrl: './usuario.component.html',
-  styleUrl: './usuario.component.css'
+  styleUrl: './usuario.component.scss'
 })
 export class UsuarioComponent implements OnInit{
   constructor(public route:ActivatedRoute){  }

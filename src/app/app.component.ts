@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     RouterLink
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'urpetweb';

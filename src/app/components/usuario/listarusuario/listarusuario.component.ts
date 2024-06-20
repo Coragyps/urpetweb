@@ -14,7 +14,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   standalone: true,
   imports: [MatTableModule, MatButtonModule, MatIconModule, MatPaginatorModule, RouterLink, MatTooltipModule, MatSnackBarModule],
   templateUrl: './listarusuario.component.html',
-  styleUrl: './listarusuario.component.css'
+  styleUrl: './listarusuario.component.scss'
 })
 export class ListarusuarioComponent implements OnInit{
   displayedColumns: string[] = [

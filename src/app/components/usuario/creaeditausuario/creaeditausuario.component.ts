@@ -18,7 +18,7 @@ import {MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
   standalone: true,
   imports: [MatSnackBarModule, MatSlideToggleModule, MatCardModule, MatIconModule,MatFormFieldModule,NgIf,ReactiveFormsModule,MatButtonModule,MatInputModule,MatSelectModule,CommonModule,RouterLink],
   templateUrl: './creaeditausuario.component.html',
-  styleUrl: './creaeditausuario.component.css'
+  styleUrl: './creaeditausuario.component.scss'
 })
 export class CreaeditausuarioComponent implements OnInit{
   oculto = true;
@@ -43,7 +43,7 @@ export class CreaeditausuarioComponent implements OnInit{
   ngOnInit(): void {
     this.route.params.subscribe((data: Params)=>{
       this.id = data['id']
-      this.edicion=data['id'] != null
+      this.edicion = data['id'] != null
       this.init()
     });
     this.form = this.formBuilder.group({
