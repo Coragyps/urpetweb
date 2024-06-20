@@ -3,7 +3,6 @@
         <h1>Formulario de Usuarios</h1>
     </div>
     <form [formGroup]="form" (submit)="aceptar()">
-
         <mat-form-field *ngIf="edicion">
 			<mat-label>Codigo</mat-label>
 			<input matInput formControlName="codigo" readonly>
@@ -19,7 +18,7 @@
         <mat-form-field>
 			<mat-label>Contraseña</mat-label>
 			<input matInput formControlName="contrasena" [type]="oculto ? 'password' : 'text'">
-			<button mat-icon-button matSuffix type="button" (click)="verContrasena($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="oculto">
+			<button mat-icon-button matSuffix type="button" (click)="oculto = !oculto">
 				<mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
 			</button>
 			<mat-error *ngIf="form.get('contrasena')?.hasError('required')">La contraseña es requerida</mat-error>

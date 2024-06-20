@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterOutlet } from '@angular/router';
 import { ListarbilleteraComponent } from './listarbilletera/listarbilletera.component';
 
@@ -13,3 +13,4 @@ export class BilleteraComponent implements OnInit{
   constructor(public route:ActivatedRoute) {}
   ngOnInit(): void {}
 }
+

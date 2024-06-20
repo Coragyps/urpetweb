@@ -1,9 +1,54 @@
 <mat-toolbar color="primary">
-  <button mat-button [matMenuTriggerFor]="menuUrpet"><mat-icon>person</mat-icon>Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuUsuarios"><mat-icon>person</mat-icon>Usuarios</button>
+  <button mat-button [matMenuTriggerFor]="menuBilleteras"><mat-icon>attach_money</mat-icon>Billeteras</button>
+  <button mat-button [matMenuTriggerFor]="menuMembresias"><mat-icon>card_membership</mat-icon>Membresias</button>
+
+  <button mat-button [matMenuTriggerFor]="menuMascotas"><mat-icon>pets</mat-icon>Mascotas</button>
+  <button mat-button [matMenuTriggerFor]="menuPaseadores"><mat-icon>directions_walk</mat-icon>Paseadores</button>
+  <button mat-button [matMenuTriggerFor]="menuReservas"><mat-icon>book</mat-icon>Reservas</button>
+
+  <button mat-button [matMenuTriggerFor]="menuBoletas"><mat-icon>receipt</mat-icon>Boletas</button>
+  <button mat-button [matMenuTriggerFor]="menuComentarios"><mat-icon>chat_bubble</mat-icon>Comentarios</button>
 </mat-toolbar>
 
-<mat-menu #menuUrpet="matMenu">
+<mat-menu #menuUsuarios="matMenu">
   <button mat-menu-item routerLink="/usuarios"><mat-icon>format_list_numbered</mat-icon>Listar</button>
   <button mat-menu-item routerLink="/usuarios/crear"><mat-icon>add</mat-icon>Registrar</button>
 </mat-menu>
+
+<mat-menu #menuBilleteras="matMenu">
+  <button mat-menu-item routerLink="/billeteras"><mat-icon>format_list_numbered</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/billeteras/crear"><mat-icon>add</mat-icon>Registrar</button>
+</mat-menu>
+
+<mat-menu #menuMembresias="matMenu">
+  <button mat-menu-item routerLink="/membresias"><mat-icon>format_list_numbered</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/membresias/crear"><mat-icon>add</mat-icon>Registrar</button>
+</mat-menu>
+
+<mat-menu #menuMascotas="matMenu">
+  <button mat-menu-item routerLink="/mascotas"><mat-icon>format_list_numbered</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/mascotas/crear"><mat-icon>add</mat-icon>Registrar</button>
+</mat-menu>
+
+<mat-menu #menuPaseadores="matMenu">
+  <button mat-menu-item routerLink="/paseadores"><mat-icon>format_list_numbered</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/paseadores/crear"><mat-icon>add</mat-icon>Registrar</button>
+</mat-menu>
+
+<mat-menu #menuReservas="matMenu">
+  <button mat-menu-item routerLink="/reservas"><mat-icon>format_list_numbered</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/reservas/crear"><mat-icon>add</mat-icon>Registrar</button>
+</mat-menu>
+
+<mat-menu #menuBoletas="matMenu">
+  <button mat-menu-item routerLink="/boletas"><mat-icon>format_list_numbered</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/boletas/crear"><mat-icon>add</mat-icon>Registrar</button>
+</mat-menu>
+
+<mat-menu #menuComentarios="matMenu">
+  <button mat-menu-item routerLink="/comentarios"><mat-icon>format_list_numbered</mat-icon>Listar</button>
+  <button mat-menu-item routerLink="/comentarios/crear"><mat-icon>add</mat-icon>Registrar</button>
+</mat-menu>
+
 <router-outlet></router-outlet>

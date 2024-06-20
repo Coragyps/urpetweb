@@ -8,11 +8,13 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { RouterLink } from '@angular/router';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgIf } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-listarusuario',
   standalone: true,
-  imports: [MatTableModule, MatButtonModule, MatIconModule, MatPaginatorModule, RouterLink, MatTooltipModule, MatSnackBarModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, MatPaginatorModule, RouterLink, MatTooltipModule, MatSnackBarModule, NgIf, ReactiveFormsModule],
   templateUrl: './listarusuario.component.html',
   styleUrl: './listarusuario.component.scss'
 })

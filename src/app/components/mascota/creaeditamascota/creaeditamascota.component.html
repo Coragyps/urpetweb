@@ -1,1 +1,64 @@
-<p>creaeditamascota works!</p>
+<div>
+    <div>
+        <h1>Formulario de Mascotas</h1>
+    </div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+        <mat-form-field *ngIf="edicion">
+			<mat-label>Codigo</mat-label>
+			<input matInput formControlName="codigo" readonly>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Nombre</mat-label>
+			<input matInput formControlName="nombre">
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Foto</mat-label>
+			<input matInput formControlName="foto">
+		</mat-form-field>
+
+		<mat-form-field>
+            <mat-label>Raza</mat-label>
+            <input type="text" matInput formControlName="raza" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete">
+                <mat-option *ngFor="let raza of razasFiltradas | async" [value]="raza">{{raza}}</mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Edad</mat-label>
+			<input type="number" matInput formControlName="edad">
+		</mat-form-field>
+
+		<mat-label>Sexo</mat-label>
+		<mat-radio-group formControlName="sexo">
+            <mat-radio-button value="MACHO">Macho</mat-radio-button>
+            <mat-radio-button value="HEMBRA">Hembra</mat-radio-button>
+        </mat-radio-group>
+
+		<mat-form-field>
+			<mat-label>Tamaño</mat-label>
+			<mat-select formControlName="tamano">
+			  <mat-option *ngFor="let g of tamanosDisponibles" [value]="g.value">
+				{{ g.viewValue }}
+			  </mat-option>
+			</mat-select>
+		</mat-form-field>
+        
+		<mat-form-field>
+			<mat-label>Usuario</mat-label>
+			<mat-select formControlName="usuario">
+				<mat-option *ngFor="let c of listaUsuarios" [value]="c.usuarioId">
+					{{c.usuarioNombre}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-slide-toggle formControlName="habilitado" [checked]="form.get('habilitado')?.value">Habilitado</mat-slide-toggle>
+
+        <button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
+		<button mat-fab extended color="warn" routerLink="/mascotas"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>
+    </form>
+</div>

@@ -1,1 +1,34 @@
-<p>creaeditacomentario works!</p>
+<div>
+    <div>
+        <h1>Formulario de Comentarios</h1>
+    </div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+        <mat-form-field *ngIf="edicion">
+			<mat-label>Codigo</mat-label>
+			<input matInput formControlName="codigo" readonly>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Texto</mat-label>
+			<textarea matInput formControlName="texto"></textarea>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Puntuacion</mat-label>
+			<input matInput formControlName="puntuacion">
+		</mat-form-field>
+        
+		<mat-form-field>
+			<mat-label>Reserva</mat-label>
+			<mat-select formControlName="reserva">
+				<mat-option *ngFor="let c of listaReservas" [value]="c.reservaId">
+					{{c.reservaId}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+        <button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
+		<button mat-fab extended color="warn" routerLink="/comentarios"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>
+    </form>
+</div>

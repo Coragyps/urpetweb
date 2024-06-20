@@ -27,11 +27,6 @@ export class CreaeditausuarioComponent implements OnInit{
   edicion: boolean = false
   id:number=0
 
-  estadosPermitidos:{value:Boolean,viewValue:string}[]=[
-    {value: true, viewValue: 'Habilitado'},
-    {value: false, viewValue: 'Desabilitado'}
-  ]
-
   constructor(
     private uS:UsuarioService,
     private router:Router,
@@ -43,7 +38,7 @@ export class CreaeditausuarioComponent implements OnInit{
   ngOnInit(): void {
     this.route.params.subscribe((data: Params)=>{
       this.id = data['id']
-      this.edicion = data['id'] != null
+      this.edicion=data['id'] != null
       this.init()
     });
     this.form = this.formBuilder.group({
@@ -58,11 +53,6 @@ export class CreaeditausuarioComponent implements OnInit{
     });
   }
 
-  verContrasena(event: MouseEvent) {
-    this.oculto = !this.oculto;
-    event.stopPropagation();
-  }
-
   aceptar(): void {
     if (this.form.valid) {
       const username = this.form.value.usuario;
@@ -71,36 +61,26 @@ export class CreaeditausuarioComponent implements OnInit{
           this.form.controls['usuario'].setErrors({ usernameTaken: true });
           this.snackBar.open('El nombre de usuario ya está en uso', '', { duration: 3000 });
         } else {
-          this.saveUser();
+          this.usuario.usuarioId = this.form.value.codigo;
+          this.usuario.username = this.form.value.usuario;
+          this.usuario.password = this.form.value.contrasena;
+          this.usuario.enabled = this.form.value.habilitado;
+          this.usuario.usuarioNombre = this.form.value.nombre;
+          this.usuario.usuarioTelefono = this.form.value.telefono;
+          this.usuario.usuarioCorreo = this.form.value.correo;
+          this.usuario.usuarioFoto = this.form.value.foto;
+          if (!this.form.value.foto) {this.usuario.usuarioFoto = 'assets/img/userpic.jpg';}
+          this.uS.insert(this.usuario).subscribe(() => {
+            this.uS.list().subscribe((data) => {
+              this.uS.setList(data);
+              if (this.edicion) {this.snackBar.open('Se modificó el Registro', '', { duration: 3000 })}
+            });
+          });
+          this.router.navigate(['usuarios']);
         }
       });
     }
   }
-
-  saveUser(): void {
-    this.usuario.usuarioId = this.form.value.codigo;
-    this.usuario.username = this.form.value.usuario;
-    this.usuario.password = this.form.value.contrasena;
-    this.usuario.enabled = this.form.value.habilitado;
-    this.usuario.usuarioNombre = this.form.value.nombre;
-    this.usuario.usuarioTelefono = this.form.value.telefono;
-    this.usuario.usuarioCorreo = this.form.value.correo;
-    this.usuario.usuarioFoto = this.form.value.foto;
-
-    if (!this.edicion) {
-      this.usuario.usuarioFoto = 'assets/default_user_picture.jpg';
-    }
-
-    this.uS.insert(this.usuario).subscribe(() => {
-      this.uS.list().subscribe((data) => {
-        this.uS.setList(data);
-        this.snackBar.open('Se modificó el Registro', '', { duration: 3000 });
-      });
-    });
-
-    this.router.navigate(['usuarios']);
-  }
-
   
   init(){
     if (this.edicion) {

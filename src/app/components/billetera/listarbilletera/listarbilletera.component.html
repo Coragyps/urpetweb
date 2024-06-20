@@ -1,1 +1,34 @@
-<p>listarbilletera works!</p>
+<div>
+	<div>
+		<h1>Lista de Billeteras</h1>
+	</div>
+		<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+		<ng-container matColumnDef="a">
+			<th mat-header-cell *matHeaderCellDef> Codigo </th>
+			<td mat-cell *matCellDef="let element"> {{element.billeteraId}} </td>
+		</ng-container>
+  
+		<ng-container matColumnDef="b">
+			<th mat-header-cell *matHeaderCellDef> Monto </th>
+			<td mat-cell *matCellDef="let element"> {{element.billeteraMonto}} </td>
+		</ng-container>
+  
+		<ng-container matColumnDef="c">
+			<th mat-header-cell *matHeaderCellDef> Usuario </th>
+			<td mat-cell *matCellDef="let element"> {{element.usuario.usuarioNombre}} </td>
+		</ng-container>  
+
+		<ng-container matColumnDef="d">
+			<th mat-header-cell *matHeaderCellDef> Acciones </th>
+			<td mat-cell *matCellDef="let element">
+				<button mat-mini-fab matTooltip="Editar" color="primary" [routerLink]="['editar',element.billeteraId]"><mat-icon>edit</mat-icon></button>
+				<button mat-mini-fab matTooltip="Eliminar" color="warn" (click)="deletear(element.billeteraId)"><mat-icon>delete</mat-icon></button>
+			</td>
+		  </ng-container>
+  
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+	<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>
