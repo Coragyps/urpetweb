@@ -15,7 +15,17 @@ import { BoletaComponent } from './components/boleta/boleta.component';
 import { CreaeditaboletaComponent } from './components/boleta/creaeditaboleta/creaeditaboleta.component';
 import { ComentarioComponent } from './components/comentario/comentario.component';
 import { CreaeditacomentarioComponent } from './components/comentario/creaeditacomentario/creaeditacomentario.component';
+import { LandingComponent } from './components/landing/landing.component';
 export const routes: Routes = [
+  {
+		path: '**',
+		redirectTo: '',
+		pathMatch: 'full',
+	},
+	{
+		path: '',
+		component: LandingComponent,
+	},
   {
     path: 'usuarios', component:UsuarioComponent,
     children:[
