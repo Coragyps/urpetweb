@@ -1,0 +1,48 @@
+<div>
+  <div>
+      <h1>Lista de usuarios</h1>
+  </div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="use">
+          <th mat-header-cell *matHeaderCellDef> Usuario </th>
+          <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nom">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.usuarioNombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tel">
+        <th mat-header-cell *matHeaderCellDef> Telefono </th>
+        <td mat-cell *matCellDef="let element"> {{element.usuarioTelefono}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cor">
+        <th mat-header-cell *matHeaderCellDef> Correo </th>
+        <td mat-cell *matCellDef="let element"> {{element.usuarioCorreo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fot">
+        <th mat-header-cell *matHeaderCellDef> Foto </th>
+        <td mat-cell *matCellDef="let element">
+          <img style="width: 40px; height: 40px; border-radius: 100%;" src="{{element.usuarioFoto}}" onerror="this.onerror=null; this.src='assets/res/userpic.jpg';">
+        </td>
+    </ng-container>
+
+      <ng-container matColumnDef="acc">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-mini-fab matTooltip="Editar" color="primary" [routerLink]="['editar',element.usuarioId]"><mat-icon>edit</mat-icon></button>
+          <button mat-mini-fab matTooltip="Eliminar" color="warn" (click)="deletear(element.usuarioId)"><mat-icon>delete</mat-icon></button>
+          <a *ngIf="element.usuarioCorreo != ''" mat-mini-fab matTooltip="Contactar" style="background-color:goldenrod;" href="mailto:{{element.usuarioCorreo}}?subject=Asunto&body=Mensaje"><mat-icon>alternate_email</mat-icon></a>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>

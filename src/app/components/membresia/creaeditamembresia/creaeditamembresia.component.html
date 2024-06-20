@@ -1,0 +1,45 @@
+<div>
+    <div>
+        <h1>Formulario de Membresias</h1>
+    </div>
+    <form [formGroup]="form" (submit)="aceptar()">
+		
+        <mat-form-field *ngIf="edicion">
+			<mat-label>Codigo</mat-label>
+			<input matInput formControlName="codigo" readonly>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Fecha Inicial y Final</mat-label>
+			<mat-date-range-input [formGroup]="form" [rangePicker]="picker">
+			  <input matStartDate formControlName="fechaInicio" placeholder="Inicio">
+			  <input matEndDate formControlName="fechaFin" placeholder="Fin">
+			</mat-date-range-input>
+			<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+			<mat-date-range-picker #picker></mat-date-range-picker>
+			<mat-error *ngIf="form.controls['fechaInicio'].hasError('matStartDateInvalid')">Fecha Inicial Invalida</mat-error>
+			<mat-error *ngIf="form.controls['fechaFin'].hasError('matEndDateInvalid')">Fecha Final Invalida</mat-error>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Estado</mat-label>
+			<mat-select formControlName="estado">
+			  <mat-option *ngFor="let g of estadosDisponibles" [value]="g.value">
+				{{ g.viewValue }}
+			  </mat-option>
+			</mat-select>
+		  </mat-form-field>
+        
+		<mat-form-field>
+			<mat-label>Usuario</mat-label>
+			<mat-select formControlName="usuario">
+				<mat-option *ngFor="let c of listaUsuarios" [value]="c.usuarioId">
+					{{c.usuarioNombre}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+        <button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
+		<button mat-fab extended color="warn" routerLink="/billeteras"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>
+    </form>
+</div>

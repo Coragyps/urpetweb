@@ -1,0 +1,45 @@
+<div>
+    <div>
+        <h1>Formulario de Boletas</h1>
+    </div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+		<mat-form-field *ngIf="edicion">
+			<mat-label>Codigo</mat-label>
+			<input matInput formControlName="codigo" readonly>
+		</mat-form-field>
+		
+		<mat-form-field>
+			<mat-label>Fecha</mat-label>
+			<input matInput [matDatepicker]="pickedad" formControlName="fecha">
+			<mat-datepicker-toggle matIconSuffix [for]="pickedad"></mat-datepicker-toggle>
+			<mat-datepicker #pickedad></mat-datepicker>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Moneda</mat-label>
+			<mat-select formControlName="moneda">
+			  <mat-option *ngFor="let g of monedasDisponibles" [value]="g.value">
+				{{ g.viewValue }}
+			  </mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Monto Total</mat-label>
+			<input matInput formControlName="monto">
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Reserva</mat-label>
+			<mat-select formControlName="reserva">
+				<mat-option *ngFor="let c of listaReservas" [value]="c.reservaId">
+					{{c.reservaId}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>		
+
+        <button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
+		<button mat-fab extended color="warn" routerLink="/boletas"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>
+    </form>
+</div>

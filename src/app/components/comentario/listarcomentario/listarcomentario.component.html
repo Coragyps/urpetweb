@@ -1,0 +1,34 @@
+<div>
+	<div>
+		<h1>Lista de Comentarios</h1>
+	</div>
+		<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+			<ng-container matColumnDef="a">
+				<th mat-header-cell *matHeaderCellDef> Texto </th>
+				<td mat-cell *matCellDef="let element"> {{element.comentarioTexto}} </td>
+			</ng-container>
+
+			<ng-container matColumnDef="b">
+				<th mat-header-cell *matHeaderCellDef> Puntuacion </th>
+				<td mat-cell *matCellDef="let element"> {{element.comentarioPuntuacion}} </td>
+			</ng-container>
+	
+			<ng-container matColumnDef="c">
+				<th mat-header-cell *matHeaderCellDef> Reserva </th>
+				<td mat-cell *matCellDef="let element"> {{element.reserva.reservaId}} </td>
+			</ng-container>  
+
+			<ng-container matColumnDef="d">
+				<th mat-header-cell *matHeaderCellDef> Acciones </th>
+				<td mat-cell *matCellDef="let element">
+					<button mat-mini-fab matTooltip="Editar" color="primary" [routerLink]="['editar',element.comentarioId]"><mat-icon>edit</mat-icon></button>
+					<button mat-mini-fab matTooltip="Eliminar" color="warn" (click)="deletear(element.comentarioId)"><mat-icon>delete</mat-icon></button>
+				</td>
+			</ng-container>
+  
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+	<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>

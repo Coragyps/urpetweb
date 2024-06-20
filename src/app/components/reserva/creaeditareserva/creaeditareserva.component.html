@@ -1,0 +1,63 @@
+<div>
+    <div>
+        <h1>Formulario de Reservas</h1>
+    </div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+		<mat-form-field *ngIf="edicion">
+			<mat-label>Codigo</mat-label>
+			<input matInput formControlName="codigo" readonly>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Estado</mat-label>
+			<mat-select formControlName="estado">
+			  <mat-option *ngFor="let g of estadosDisponibles" [value]="g.value">
+				{{ g.viewValue }}
+			  </mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Fecha</mat-label>
+			<input matInput [matDatepicker]="pickedad" formControlName="fecha">
+			<mat-datepicker-toggle matIconSuffix [for]="pickedad"></mat-datepicker-toggle>
+			<mat-datepicker #pickedad></mat-datepicker>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Hora Inicio</mat-label>
+			<input matInput formControlName="horainicio" [disableClick]=true [format]="24" [ngxMatTimepicker]="pickinicio" placeholder="08:00"/>
+			<ngx-mat-timepicker appendToInput="true" #pickinicio></ngx-mat-timepicker>
+			<ngx-mat-timepicker-toggle 	matSuffix (click)="pickinicio.open()"></ngx-mat-timepicker-toggle>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Hora Fin</mat-label>
+			<input matInput formControlName="horafin" [disableClick]=true [format]="24" [ngxMatTimepicker]="pickfin" placeholder="08:00"/>
+			<ngx-mat-timepicker appendToInput="true" #pickfin></ngx-mat-timepicker>
+			<ngx-mat-timepicker-toggle 	matSuffix (click)="pickfin.open()"></ngx-mat-timepicker-toggle>
+		</mat-form-field>
+
+		<mat-form-field>
+			<mat-label>Mascota</mat-label>
+			<mat-select formControlName="mascota">
+				<mat-option *ngFor="let c of listaMascotas" [value]="c.mascotaId">
+					{{c.macotaNombre}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		
+		<mat-form-field>
+			<mat-label>Paseador</mat-label>
+			<mat-select formControlName="paseador">
+				<mat-option *ngFor="let c of listaPaseadores" [value]="c.paseadorId">
+					{{c.usuario.usuarioNombre}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>	
+
+        <button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
+		<button mat-fab extended color="warn" routerLink="/reservas"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>
+    </form>
+</div>
