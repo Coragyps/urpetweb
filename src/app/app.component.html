@@ -12,31 +12,31 @@
 			<span class="texto" *ngIf="colapsado">Inicio</span>
 		  </a>
 		</li>
-			<li class="item">
-				<a matRipple class="enlace" routerLink="/mascotas" matTooltip="Mis Mascotas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+			<li class="item" *ngIf="isCliente() || isAdmin()">
+				<a matRipple class="enlace" [routerLink]="['/mascotas']" [queryParams]="{ r: role, u:id }" matTooltip="Mis Mascotas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>pets</mat-icon>
 					<span class="texto" *ngIf="colapsado">Mascotas</span>
 				</a>
 			</li>
-			<li class="item">
+			<li class="item" *ngIf="isPaseador()">
 				<a matRipple class="enlace" routerLink="/reservas" matTooltip="Mi Historial" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>history</mat-icon>
 					<span class="texto" *ngIf="colapsado">Historial</span>
 				</a>
 			</li>
-			<li class="item">
+			<li class="item" *ngIf="isPaseador()">
 				<a matRipple class="enlace" routerLink="/billeteras" matTooltip="Mi Billetera" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>attach_money</mat-icon>
 					<span class="texto" *ngIf="colapsado">Billetera</span>
 				</a>
 			</li>
-			<li class="item">
+			<li class="item" *ngIf="isPaseador()">
 				<a matRipple class="enlace" routerLink="/membresias" matTooltip="Membresia" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>card_membership</mat-icon>
 					<span class="texto" *ngIf="colapsado">Membresia</span>
 				</a>
 			</li>
-			<li class="item">
+			<li class="item" *ngIf="isPaseador()">
 				<a matRipple class="enlace" routerLink="/usuarios" matTooltip="Mi Cuenta" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>account_circle</mat-icon>
 					<span class="texto" *ngIf="colapsado">Cuenta</span>

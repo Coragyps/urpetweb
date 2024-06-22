@@ -62,7 +62,7 @@ export const routes: Routes = [
     path: 'mascotas', component:MascotaComponent,
     children:[
       {path:'crear',component:CreaeditamascotaComponent},
-      {path:'editar/:id',component: CreaeditamascotaComponent}
+      {path:'editar/:id',component: CreaeditamascotaComponent},
     ],
     canActivate: [segGuard],
   },

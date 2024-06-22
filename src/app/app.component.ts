@@ -60,12 +60,6 @@ export class AppComponent {
     this.loginService.logout();
   }
 
-  /*loadUserData() {
-    const userData = this.loginService.showUserData();
-    this.role = userData.role;
-    this.username = userData.username;
-  }*/
-
   loadUserData() {
     const userData = this.loginService.showUserData();
     this.role = userData.role;

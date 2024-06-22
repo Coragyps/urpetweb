@@ -38,4 +38,8 @@ export class MascotaService {
   eliminar(id:number){
     return this.httpClient.delete(`${this.url}/${id}`)
   }
+
+  listidcliente(id:number){
+    return this.httpClient.get<Mascota[]>(`${this.url}/mias/${id}`)
+  }
 }
