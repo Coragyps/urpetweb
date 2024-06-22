@@ -19,7 +19,7 @@
 			</mat-card-content>
 			<mat-card-actions>
 				<button mat-button [routerLink]="['editar',mascota.mascotaId]" color="primary">EDITAR</button>
-				   <button mat-button color="warn">ELIMINAR</button>
+				   <button mat-button color="warn" (click)="deletear(mascota.mascotaId)">ELIMINAR</button>
 			  </mat-card-actions>
 		</mat-card>	
 	</div>

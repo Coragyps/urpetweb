@@ -8,11 +8,12 @@ import { LoginService } from '../../../services/login.service';
 import { UsuarioService } from '../../../services/usuario.service';
 import { MascotaService } from '../../../services/mascota.service';
 import { Mascota } from '../../../models/mascota';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-clientelistarmascota',
   standalone: true,
-  imports: [RouterLink, NgIf, MatCardModule, NgFor, CommonModule, MatButtonModule, MatIconModule, RouterOutlet],
+  imports: [RouterLink, NgIf, MatCardModule, NgFor, CommonModule, MatButtonModule, MatIconModule, RouterOutlet, MatSnackBarModule],
   templateUrl: './clientelistarmascota.component.html',
   styleUrl: './clientelistarmascota.component.scss'
 })
@@ -24,7 +25,12 @@ export class ClientelistarmascotaComponent implements OnInit{
   name: string=''
   photo: string=''
   
-  constructor(public route:ActivatedRoute, private mS:MascotaService, private loginService:LoginService, private uS: UsuarioService) {}
+  constructor(
+    public route:ActivatedRoute, 
+    private mS:MascotaService, 
+    private loginService:LoginService, 
+    private uS: UsuarioService,
+    private snackBar: MatSnackBar) {}
   ngOnInit(): void {
     const userData = this.loginService.showUserData();
     this.role = userData.role;
@@ -39,5 +45,16 @@ export class ClientelistarmascotaComponent implements OnInit{
           this.dataSource = data
         }) 
     },);
+  }
+
+  deletear(id:number){
+    if (window.confirm('¿Eliminar este Registro?')) {
+      this.mS.eliminar(id).subscribe((data) => {
+        this.mS.list().subscribe((data) => {
+          this.mS.setList(data);
+          this.snackBar.open('Se eliminó el Registro', '', {duration: 3000,})
+        });
+      });
+    }
   }
 }
