@@ -19,6 +19,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { segGuard } from './guard/seguridad.guard';
+import { RegistroComponent } from './components/usuario/registro/registro.component';
+import { PaseadoresComponent } from './components/usuario/paseadores/paseadores.component';
 export const routes: Routes = [
 	{
 		path: '',
@@ -26,11 +28,11 @@ export const routes: Routes = [
 	},
   {
     path: 'usuarios', component:UsuarioComponent,
+    canActivate: [segGuard],
     children:[
       {path: 'crear', component: CreaeditausuarioComponent},
       {path: 'editar/:id', component: CreaeditausuarioComponent}
     ],
-    canActivate: [segGuard],
   },
   {
     path: 'billeteras', component:BilleteraComponent,
@@ -92,6 +94,14 @@ export const routes: Routes = [
     path: 'inicio',
     component: HomeComponent,
     canActivate: [segGuard],
+  },
+  {
+    path: 'registrarse',
+    component: RegistroComponent,
+  },
+  {
+    path: 'equipo',
+    component: PaseadoresComponent,
   },
   {
     path: 'login',

@@ -1,0 +1,55 @@
+<div class="registro">
+	<nav class="nav">
+		<div class="logo">
+			<img src="assets/res/urpet.jpg" alt="Logo de la empresa" width="65" height="65">
+			UR PET
+		</div>
+		<ul class="menu">
+			<li><a routerLink="/">Nosotros</a></li>
+			<li><a routerLink="/">Servicios</a></li>
+			<li><a routerLink="/">Membresia</a></li>
+			<li><a routerLink="/">Contactanos</a></li>
+			<li><a routerLink="/login">Ingresar</a></li>
+		</ul>
+	</nav>
+	<main>
+		<div class="contenedor">
+				<h1>Registrarse</h1>
+			<form [formGroup]="form" (submit)="aceptar()">
+		
+				<mat-form-field appearance="outline">
+					<mat-label>Usuario</mat-label>
+					<input matInput formControlName="usuario">
+					<mat-error *ngIf="form.get('usuario')?.hasError('required')">El usuario es requerido</mat-error>
+					<mat-error *ngIf="form.get('usuario')?.hasError('usernameTaken')">El nombre de usuario ya está en uso</mat-error>
+				</mat-form-field>
+		
+				<mat-form-field appearance="outline">
+					<mat-label>Contraseña</mat-label>
+					<input matInput formControlName="contrasena" [type]="oculto ? 'password' : 'text'">
+					<button mat-icon-button matSuffix type="button" (click)="oculto = !oculto">
+						<mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
+					</button>
+					<mat-error *ngIf="form.get('contrasena')?.hasError('required')">La contraseña es requerida</mat-error>
+				</mat-form-field>
+		
+				<mat-form-field appearance="outline">
+					<mat-label>Nombre</mat-label>
+					<input matInput formControlName="nombre">
+					<mat-error *ngIf="form.get('nombre')?.hasError('required')">El nombre es requerido</mat-error>
+				</mat-form-field>
+		
+				<mat-form-field appearance="outline">
+					<mat-label>Telefono</mat-label>
+					<input matInput formControlName="telefono">
+					<mat-error *ngIf="form.get('telefono')?.hasError('required')">El teléfono es requerido</mat-error>
+				</mat-form-field>
+		
+				<button class="ingresar" mat-raised-button color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Registarme</button><br>
+				<span>
+					¿Eres un PetLover? <a routerLink="/equipo">Convertirme en Paseador</a>
+				</span>
+			</form>
+		</div>
+	</main>
+</div>

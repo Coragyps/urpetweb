@@ -32,8 +32,10 @@ export class LoginComponent implements OnInit{
     let request = new JwtRequest()
     request.username=this.username
     request.password=this.password
+    
     this.loginService.login(request).subscribe((data: any)=>{
       sessionStorage.setItem('token', data.jwttoken)
+      this.loginService.updateLoginState()
       this.router.navigate(['inicio'])
     },
     (error)=>{

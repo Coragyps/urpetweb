@@ -1,17 +1,17 @@
 <div class="diseño">
-	<div class="menu" [ngClass]="colapsado ? 'menucolapsado' : ''" *ngIf="verificar()">
-		<div class="cabecera">
-			<img class="logo" matTooltip="Ajustar Menu" [matTooltipPosition]="'below'" src="assets/res/urpet.jpg" alt="logo" (click)="colapsado=!colapsado;">
-			<div class="titulo" *ngIf="colapsado">UR PET</div>
-		</div>
-
-		<ul class="opciones">
-			<li class="item">
-				<a matRipple class="enlace" routerLink="/inicio" matTooltip="Ir al Inicio" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
-					<mat-icon>home</mat-icon>
-					<span class="texto" *ngIf="colapsado">Inicio</span>
-				</a>
-			</li>
+	<div class="menu" [ngClass]="colapsado ? 'menucolapsado' : ''" *ngIf="verificado">
+	  <div class="cabecera">
+		<img class="logo" matTooltip="Ajustar Menu" [matTooltipPosition]="'below'" src="assets/res/urpet.jpg" alt="logo" (click)="colapsado=!colapsado;">
+		<div class="titulo" *ngIf="colapsado">UR PET</div>
+	  </div>
+  
+	  <ul class="opciones">
+		<li class="item">
+		  <a matRipple class="enlace" routerLink="/inicio" matTooltip="Ir al Inicio" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+			<mat-icon>home</mat-icon>
+			<span class="texto" *ngIf="colapsado">Inicio</span>
+		  </a>
+		</li>
 			<li class="item">
 				<a matRipple class="enlace" routerLink="/mascotas" matTooltip="Mis Mascotas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>pets</mat-icon>
@@ -51,18 +51,13 @@
 		</ul>
 
 		<div class="usuario">
-			<img matTooltip="Ponganos 20" [matTooltipPosition]="'above'" class="imagen" src="assets/res/userpic.jpg" alt="imagen">
+			<img matTooltip="Ponganos 20" [matTooltipPosition]="'above'" class="imagen" src="{{photo}}" alt="imagen">
 			<div class="info" *ngIf="colapsado">
-				Arturo<br><b>{{ role }}</b>
+			  {{ name }}<br><b>{{ role }}</b>
 			</div>
+		  </div>
 		</div>
-	</div>
-	<div class="contenido" [style.margin-left]="verificar() ? (colapsado ? '14rem' : '5rem') : '0'">
-		<router-outlet></router-outlet>
-	</div>
-</div>
-
-<mat-menu #menu="matMenu">
-	<button mat-menu-item>Item 1</button>
-	<button mat-menu-item>Item 2</button>
-</mat-menu>
+		<div class="contenido" [style.margin-left]="margin()">
+		  <router-outlet></router-outlet>
+		</div>
+	  </div>

@@ -45,4 +45,12 @@ export class UsuarioService {
   existsByUsername(username: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.url}/?username=${username}`);
   }
+
+  getUserByUsername(username: string): Observable<any> {
+    return this.http.get<any>(`${this.url}/detalle?username=${username}`);
+  }
+
+  insertwithrol(p:Usuario, rol:string) {
+    return this.http.post(`${this.url}/?rol=${rol}`,p)
+  }
 }
