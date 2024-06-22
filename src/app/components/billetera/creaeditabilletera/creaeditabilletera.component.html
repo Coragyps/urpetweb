@@ -1,19 +1,17 @@
-<div>
-    <div>
-        <h1>Formulario de Billeteras</h1>
-    </div>
+<div class="todo">
+	<section>
     <form [formGroup]="form" (submit)="aceptar()">
-        <mat-form-field *ngIf="edicion">
+        <mat-form-field *ngIf="edicion" appearance="outline">
 			<mat-label>Codigo</mat-label>
 			<input matInput formControlName="codigo" readonly>
 		</mat-form-field>
 
-		<mat-form-field>
+		<mat-form-field appearance="outline">
 			<mat-label>monto</mat-label>
 			<input matInput formControlName="monto">
 		</mat-form-field>
         
-		<mat-form-field>
+		<mat-form-field appearance="outline">
 			<mat-label>Usuario</mat-label>
 			<mat-select formControlName="usuario">
 				<mat-option *ngFor="let c of listaUsuarios" [value]="c.usuarioId">
@@ -21,7 +19,10 @@
 				</mat-option>
 			</mat-select>
 		</mat-form-field>
-        <button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
+        <span>
+			<button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
 		<button mat-fab extended color="warn" routerLink="/billeteras"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>
+		</span>
     </form>
+</section>
 </div>

@@ -1,1 +1,39 @@
-/*button {margin-right: 10px;}*/
+.todo {
+	span{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+
+		button{
+			background-color: #09C59B;
+		}
+
+		h1{
+			font-size: 50px;
+			text-align: center;
+			margin: 80px 0 80px 20px; 
+			font-weight: 900;
+		}
+	}
+	main {
+		background-color: rgb(246, 252, 167,0.6);
+		box-shadow: 0 12px 25px 8px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+		padding: 45px 0 30px 60px;
+		margin-left: 25px;
+		border-radius: 50px 0 0 50px;
+	}
+
+	table{
+		box-shadow: none;
+		background-color: transparent;
+
+		button{
+			margin-right: 5px;
+		}
+	}
+
+	mat-paginator{
+		background-color: transparent;
+	}
+}

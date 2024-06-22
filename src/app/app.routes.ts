@@ -21,6 +21,8 @@ import { HomeComponent } from './components/home/home.component';
 import { segGuard } from './guard/seguridad.guard';
 import { RegistroComponent } from './components/usuario/registro/registro.component';
 import { PaseadoresComponent } from './components/usuario/paseadores/paseadores.component';
+import { ClientecreaeditamascotaComponent } from './components/mascota/clientecreaeditamascota/clientecreaeditamascota.component';
+import { ClientelistarmascotaComponent } from './components/mascota/clientelistarmascota/clientelistarmascota.component';
 export const routes: Routes = [
 	{
 		path: '',
@@ -63,6 +65,10 @@ export const routes: Routes = [
     children:[
       {path:'crear',component:CreaeditamascotaComponent},
       {path:'editar/:id',component: CreaeditamascotaComponent},
+      {path:'mias',component:ClientelistarmascotaComponent, children:[
+        {path:'crear',component: ClientecreaeditamascotaComponent},
+        {path:'editar/:id',component: ClientecreaeditamascotaComponent},
+      ]},
     ],
     canActivate: [segGuard],
   },

@@ -1,0 +1,27 @@
+<router-outlet></router-outlet>
+<section [hidden]="route.children.length !==0" class="cliente">
+	<span>
+		<button mat-fab extended matTooltip="Nuevo Registro" routerLink="/mascotas/mias/crear"><mat-icon>library_add</mat-icon>AGREGAR</button>
+		<h1>Mis Mascotas</h1>	
+	</span>
+	<div class="card-holder">
+		<mat-card class="example-card" appearance="outlined" *ngFor="let mascota of dataSource">
+			<mat-card-header>
+			  <mat-card-title-group>
+				<mat-card-title>{{ mascota.macotaNombre }}</mat-card-title>
+				<mat-card-subtitle>{{ mascota.mascotaRaza }}</mat-card-subtitle>
+				<img mat-card-lg-image  src="{{mascota.mascotaFoto}}" onerror="this.onerror=null; this.src='assets/res/petpic.jpg';" >
+			  </mat-card-title-group>
+			</mat-card-header>
+			<mat-card-content>
+				<p>Edad: {{ mascota.mascotaEdad }}</p>
+				<p>Sexo: {{ mascota.mascotaSexo }}</p>
+			</mat-card-content>
+			<mat-card-actions>
+				<button mat-button [routerLink]="['editar',mascota.mascotaId]" color="primary">EDITAR</button>
+				   <button mat-button color="warn">ELIMINAR</button>
+			  </mat-card-actions>
+		</mat-card>	
+	</div>
+</section>
+  

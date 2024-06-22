@@ -44,21 +44,18 @@
 				  </mat-option>
 				</mat-select>
 			</mat-form-field>
-			
+
 			<mat-form-field appearance="outline">
-				<mat-label>Usuario</mat-label>
-				<mat-select formControlName="usuario">
-					<mat-option *ngFor="let c of listaUsuarios" [value]="c.usuarioId">
-						{{c.usuarioNombre}}
-					</mat-option>
-				</mat-select>
+				<mat-label>usuario</mat-label>
+				<input matInput formControlName="usuario" readonly>
 			</mat-form-field>
+		
 	
 			<mat-slide-toggle formControlName="habilitado" [checked]="form.get('habilitado')?.value">Habilitado</mat-slide-toggle>
 	
 			<span>
 				<button mat-fab extended color="primary" (click)="aceptar()"><mat-icon>thumb_up_off_alt</mat-icon>Aceptar</button>
-				<button mat-fab extended color="warn" routerLink="/mascotas"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>
+				<button mat-fab extended color="warn" routerLink="/mascotas/mias"><mat-icon>do_not_disturb</mat-icon>Cancelar</button>
 			</span>
 		</form>
 	</section>

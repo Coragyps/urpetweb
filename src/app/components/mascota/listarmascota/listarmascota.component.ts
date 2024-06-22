@@ -7,11 +7,12 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { Mascota } from '../../../models/mascota';
 import { MascotaService } from '../../../services/mascota.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-listarmascota',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSnackBarModule, RouterLink, MatIconModule,MatButtonModule],
+  imports: [MatTableModule, MatPaginatorModule, MatSnackBarModule, RouterLink, MatIconModule,MatButtonModule, MatTooltipModule],
   templateUrl: './listarmascota.component.html',
   styleUrl: './listarmascota.component.scss'
 })

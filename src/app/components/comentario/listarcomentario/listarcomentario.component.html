@@ -1,7 +1,9 @@
-<div>
-	<div>
-		<h1>Lista de Comentarios</h1>
-	</div>
+<div class="todo">
+	<span>
+		<button mat-fab extended matTooltip="Nuevo Registro" [routerLink]="['crear']"><mat-icon>library_add</mat-icon>AGREGAR</button>
+		<h1>Lista de Comentarios</h1>	
+	</span>
+	<main>
 		<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
 			<ng-container matColumnDef="a">
@@ -31,4 +33,5 @@
 		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 	</table>
 	<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
-  </div>
+</main>
+</div>

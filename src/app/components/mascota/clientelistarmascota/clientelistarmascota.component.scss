@@ -1,0 +1,43 @@
+.cliente {
+	span{
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+
+		button{
+			background-color: #09C59B;
+		}
+
+		h1{
+			font-size: 50px;
+			text-align: center;
+			margin: 80px 0 80px 20px; 
+			font-weight: 900;
+		}
+	}
+
+	.card-holder {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		gap: 20px; 
+		padding: 0 40px;
+	
+		.example-card {
+			width: 420px;
+			height: 270px;
+			border-radius: 20px;
+			box-shadow: 0 12px 25px 8px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+		
+			img{
+				border-radius: 20px;
+			}
+		}
+	
+		.example-card:hover{
+			box-shadow: 0 12px 25px 8px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+		}
+	}
+}

@@ -12,34 +12,58 @@
 			<span class="texto" *ngIf="colapsado">Inicio</span>
 		  </a>
 		</li>
-			<li class="item" *ngIf="isCliente() || isAdmin()">
-				<a matRipple class="enlace" [routerLink]="['/mascotas']" [queryParams]="{ r: role, u:id }" matTooltip="Mis Mascotas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+		<li class="item" *ngIf="isAdmin()">
+			<a matRipple class="enlace" routerLink="/comentarios" matTooltip="Comentarios" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+				<mat-icon>chat</mat-icon>
+				<span class="texto" *ngIf="colapsado">Comentarios</span>
+			</a>
+		</li>
+		<li class="item" *ngIf="isAdmin()">
+			<a matRipple class="enlace" routerLink="/paseadores" matTooltip="Paseadores" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+				<mat-icon>directions_walk</mat-icon>
+				<span class="texto" *ngIf="colapsado">Paseadores</span>
+			</a>
+		</li>
+		<li class="item" *ngIf="isAdmin()">
+			<a matRipple class="enlace" routerLink="/boletas" matTooltip="Boletas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+				<mat-icon>receipt</mat-icon>
+				<span class="texto" *ngIf="colapsado">Boletas</span>
+			</a>
+		</li>
+			<li class="item" *ngIf="isAdmin()">
+				<a matRipple class="enlace" routerLink="/mascotas" matTooltip="Mascotas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>pets</mat-icon>
 					<span class="texto" *ngIf="colapsado">Mascotas</span>
 				</a>
 			</li>
-			<li class="item" *ngIf="isPaseador()">
-				<a matRipple class="enlace" routerLink="/reservas" matTooltip="Mi Historial" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
-					<mat-icon>history</mat-icon>
-					<span class="texto" *ngIf="colapsado">Historial</span>
+			<li class="item" *ngIf="isCliente()">
+				<a matRipple class="enlace" routerLink="/mascotas/mias" matTooltip="Mis Mascotas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>pets</mat-icon>
+					<span class="texto" *ngIf="colapsado">Mis Mascotas</span>
 				</a>
 			</li>
-			<li class="item" *ngIf="isPaseador()">
-				<a matRipple class="enlace" routerLink="/billeteras" matTooltip="Mi Billetera" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+			<li class="item" *ngIf="isAdmin()">
+				<a matRipple class="enlace" routerLink="/reservas" matTooltip="Reservas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>auto_stories</mat-icon>
+					<span class="texto" *ngIf="colapsado">Reservas</span>
+				</a>
+			</li>
+			<li class="item" *ngIf="isAdmin()">
+				<a matRipple class="enlace" routerLink="/billeteras" matTooltip="Billeteras" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>attach_money</mat-icon>
-					<span class="texto" *ngIf="colapsado">Billetera</span>
+					<span class="texto" *ngIf="colapsado">Billeteras</span>
 				</a>
 			</li>
-			<li class="item" *ngIf="isPaseador()">
-				<a matRipple class="enlace" routerLink="/membresias" matTooltip="Membresia" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+			<li class="item" *ngIf="isAdmin()">
+				<a matRipple class="enlace" routerLink="/membresias" matTooltip="Membresias" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>card_membership</mat-icon>
-					<span class="texto" *ngIf="colapsado">Membresia</span>
+					<span class="texto" *ngIf="colapsado">Membresias</span>
 				</a>
 			</li>
-			<li class="item" *ngIf="isPaseador()">
-				<a matRipple class="enlace" routerLink="/usuarios" matTooltip="Mi Cuenta" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+			<li class="item" *ngIf="isAdmin()">
+				<a matRipple class="enlace" routerLink="/usuarios" matTooltip="Usuarios" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>account_circle</mat-icon>
-					<span class="texto" *ngIf="colapsado">Cuenta</span>
+					<span class="texto" *ngIf="colapsado">Usuarios</span>
 				</a>
 			</li>	
 			<li class="item">
