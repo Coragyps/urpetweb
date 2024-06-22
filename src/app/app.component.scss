@@ -1,0 +1,93 @@
+.menu {
+	background: linear-gradient(0deg, #08284f, #2b6dbb, #09C59B);
+	transition: all 0.3s ease;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+	width: 5rem;
+	height: 100vh;
+	box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+	font-family: "Open Sans", sans-serif;
+
+	.cabecera {
+		display: flex;
+		align-items: center;
+		padding: 0.938rem;
+		width: 100%;
+		font-size: 30px;
+		font-weight: 700;
+		color: white;
+
+		.logo {
+			width: 3rem;
+			min-width: 3rem;
+			cursor: w-resize;
+			margin-right: 0.938rem;
+		}
+	}
+
+	.opciones {
+		list-style: none;
+		padding: 0 0.938rem;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+	
+		.item {	
+			.enlace {
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				height: 3rem;
+				color: white;
+				text-decoration: none;
+				border-radius: 0.625rem;
+				transition: all 0.3s ease;
+	
+				mat-icon{
+					width: 2rem;
+					min-width: 2rem;
+					margin: 0 0.5rem;
+					text-align: center;
+					margin-right: 0.6rem;
+				}
+
+			}
+
+			.enlace:hover {
+				margin: 1rem 0;
+				color: black;
+				background-color: #ffb800;
+			}
+		}
+	}
+
+	.usuario {
+		width: 100%;
+		padding: 0.938rem;
+		display: flex;
+		color: white;
+		align-items: center;
+
+		.imagen {
+			cursor: help;
+			width: 3rem;
+			border-radius: 50%;
+			border: 3px solid #eeeeee;
+			margin-right: 0.938rem;
+		}
+		b {font-weight: 800;}
+	}
+}
+
+.menucolapsado {
+	width: 14rem;
+}
+
+.contenido {
+	flex-grow: 1;
+	transition: margin-left 0.3s ease;
+}

@@ -1,54 +1,68 @@
-<mat-toolbar color="primary">
-  <button mat-button [matMenuTriggerFor]="menuUsuarios"><mat-icon>person</mat-icon>Usuarios</button>
-  <button mat-button [matMenuTriggerFor]="menuBilleteras"><mat-icon>attach_money</mat-icon>Billeteras</button>
-  <button mat-button [matMenuTriggerFor]="menuMembresias"><mat-icon>card_membership</mat-icon>Membresias</button>
+<div class="diseño">
+	<div class="menu" [ngClass]="colapsado ? 'menucolapsado' : ''" *ngIf="verificar()">
+		<div class="cabecera">
+			<img class="logo" matTooltip="Ajustar Menu" [matTooltipPosition]="'below'" src="assets/res/urpet.jpg" alt="logo" (click)="colapsado=!colapsado;">
+			<div class="titulo" *ngIf="colapsado">UR PET</div>
+		</div>
 
-  <button mat-button [matMenuTriggerFor]="menuMascotas"><mat-icon>pets</mat-icon>Mascotas</button>
-  <button mat-button [matMenuTriggerFor]="menuPaseadores"><mat-icon>directions_walk</mat-icon>Paseadores</button>
-  <button mat-button [matMenuTriggerFor]="menuReservas"><mat-icon>book</mat-icon>Reservas</button>
+		<ul class="opciones">
+			<li class="item">
+				<a matRipple class="enlace" routerLink="/inicio" matTooltip="Ir al Inicio" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>home</mat-icon>
+					<span class="texto" *ngIf="colapsado">Inicio</span>
+				</a>
+			</li>
+			<li class="item">
+				<a matRipple class="enlace" routerLink="/mascotas" matTooltip="Mis Mascotas" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>pets</mat-icon>
+					<span class="texto" *ngIf="colapsado">Mascotas</span>
+				</a>
+			</li>
+			<li class="item">
+				<a matRipple class="enlace" routerLink="/reservas" matTooltip="Mi Historial" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>history</mat-icon>
+					<span class="texto" *ngIf="colapsado">Historial</span>
+				</a>
+			</li>
+			<li class="item">
+				<a matRipple class="enlace" routerLink="/billeteras" matTooltip="Mi Billetera" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>attach_money</mat-icon>
+					<span class="texto" *ngIf="colapsado">Billetera</span>
+				</a>
+			</li>
+			<li class="item">
+				<a matRipple class="enlace" routerLink="/membresias" matTooltip="Membresia" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>card_membership</mat-icon>
+					<span class="texto" *ngIf="colapsado">Membresia</span>
+				</a>
+			</li>
+			<li class="item">
+				<a matRipple class="enlace" routerLink="/usuarios" matTooltip="Mi Cuenta" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>account_circle</mat-icon>
+					<span class="texto" *ngIf="colapsado">Cuenta</span>
+				</a>
+			</li>	
+			<li class="item">
+				<a matRipple class="enlace" routerLink="/" (click)="cerrar()" matTooltip="Cerrar Sesion" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>logout</mat-icon>
+					<span class="texto" *ngIf="colapsado">Cerrar Sesion</span>
+				</a>
+			</li>		
+		</ul>
 
-  <button mat-button [matMenuTriggerFor]="menuBoletas"><mat-icon>receipt</mat-icon>Boletas</button>
-  <button mat-button [matMenuTriggerFor]="menuComentarios"><mat-icon>chat_bubble</mat-icon>Comentarios</button>
-</mat-toolbar>
+		<div class="usuario">
+			<img matTooltip="Ponganos 20" [matTooltipPosition]="'above'" class="imagen" src="assets/res/userpic.jpg" alt="imagen">
+			<div class="info" *ngIf="colapsado">
+				Arturo<br><b>{{ role }}</b>
+			</div>
+		</div>
+	</div>
+	<div class="contenido" [style.margin-left]="verificar() ? (colapsado ? '14rem' : '5rem') : '0'">
+		<router-outlet></router-outlet>
+	</div>
+</div>
 
-<mat-menu #menuUsuarios="matMenu">
-  <button mat-menu-item routerLink="/usuarios"><mat-icon>format_list_numbered</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/usuarios/crear"><mat-icon>add</mat-icon>Registrar</button>
+<mat-menu #menu="matMenu">
+	<button mat-menu-item>Item 1</button>
+	<button mat-menu-item>Item 2</button>
 </mat-menu>
-
-<mat-menu #menuBilleteras="matMenu">
-  <button mat-menu-item routerLink="/billeteras"><mat-icon>format_list_numbered</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/billeteras/crear"><mat-icon>add</mat-icon>Registrar</button>
-</mat-menu>
-
-<mat-menu #menuMembresias="matMenu">
-  <button mat-menu-item routerLink="/membresias"><mat-icon>format_list_numbered</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/membresias/crear"><mat-icon>add</mat-icon>Registrar</button>
-</mat-menu>
-
-<mat-menu #menuMascotas="matMenu">
-  <button mat-menu-item routerLink="/mascotas"><mat-icon>format_list_numbered</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/mascotas/crear"><mat-icon>add</mat-icon>Registrar</button>
-</mat-menu>
-
-<mat-menu #menuPaseadores="matMenu">
-  <button mat-menu-item routerLink="/paseadores"><mat-icon>format_list_numbered</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/paseadores/crear"><mat-icon>add</mat-icon>Registrar</button>
-</mat-menu>
-
-<mat-menu #menuReservas="matMenu">
-  <button mat-menu-item routerLink="/reservas"><mat-icon>format_list_numbered</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/reservas/crear"><mat-icon>add</mat-icon>Registrar</button>
-</mat-menu>
-
-<mat-menu #menuBoletas="matMenu">
-  <button mat-menu-item routerLink="/boletas"><mat-icon>format_list_numbered</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/boletas/crear"><mat-icon>add</mat-icon>Registrar</button>
-</mat-menu>
-
-<mat-menu #menuComentarios="matMenu">
-  <button mat-menu-item routerLink="/comentarios"><mat-icon>format_list_numbered</mat-icon>Listar</button>
-  <button mat-menu-item routerLink="/comentarios/crear"><mat-icon>add</mat-icon>Registrar</button>
-</mat-menu>
-
-<router-outlet></router-outlet>

@@ -1,0 +1,43 @@
+<div class="login">
+	<nav class="nav">
+		<div class="logo">
+			<img src="assets/res/urpet.jpg" alt="Logo de la empresa" width="65" height="65">
+			UR PET
+		</div>
+		<ul class="menu">
+			<li><a routerLink="/">Nosotros</a></li>
+			<li><a routerLink="/">Servicios</a></li>
+			<li><a routerLink="/">Membresia</a></li>
+			<li><a routerLink="/">Contactanos</a></li>
+			<li><a routerLink="/home">Registrarse</a></li>
+		</ul>
+	</nav>
+	<main>
+		<div class="contenedor">
+			<span class="logo">
+				<h1>INICIAR SESIÓN</h1>
+				<img src="assets/img/petlover.svg" alt="Perro">
+			</span>
+			<mat-form-field appearance="outline">
+				<mat-label>Usuario</mat-label>
+				<input matInput [(ngModel)]="username" />
+			</mat-form-field><br>
+
+
+			<mat-form-field appearance="outline">
+				<mat-label>Contraseña</mat-label>
+				<input type="password" matInput [(ngModel)]="password" [type]="oculto ? 'password' : 'text'"/>
+				<button mat-icon-button matSuffix type="button" (click)="oculto = !oculto">
+					<mat-icon>{{oculto ? 'visibility_off' : 'visibility'}}</mat-icon>
+				</button>
+			</mat-form-field><br>
+
+
+
+			<button class="ingresar" mat-raised-button color="primary" (click)="login()">Ingresar</button><br>
+			<span>
+				Aun no tiene una cuenta? <a href="#">Registrarse</a>
+			</span>
+		</div>
+	</main>
+</div>

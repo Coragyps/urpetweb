@@ -1,5 +1,5 @@
 <div class="landing">
-    <button mat-icon-button (click)="scrollToTop()" title="Volver arriba" class="ir-arriba">
+    <button mat-icon-button (click)="irArriba()" title="Volver arriba" class="ir-arriba">
         <mat-icon>arrow_upward</mat-icon>
     </button>
 	<nav class="nav">
@@ -8,12 +8,12 @@
 			UR PET
 		</div>
 		<ul class="menu">
-			<li><a routerLink="/" fragment="Nosotros">Nosotros</a></li>
-			<li><a routerLink="/" fragment="Servicios">Servicios</a></li>
-			<li><a routerLink="/" fragment="Membresia">Membresia</a></li>
-			<li><a routerLink="/" fragment="Contactanos">Contactanos</a></li>
-			<li><a routerLink="/" fragment="Contactanos">Ingresar</a></li>
-			<li><a routerLink="/" fragment="Contactanos">Registrarse</a></li>
+			<li><a href="#Nosotros">Nosotros</a></li>
+			<li><a href="#Servicios">Servicios</a></li>
+			<li><a href="#Membresia">Membresia</a></li>
+			<li><a href="#Contactanos">Contactanos</a></li>
+			<li><a routerLink="login">Ingresar</a></li>
+			<li><a routerLink="login">Registrarse</a></li>
 		</ul>
 	</nav>
 	<header>
@@ -36,7 +36,7 @@
 			<div class="texto">
 				<h1>Bienvenido, somos<br>Ur Pet</h1>
 				<p>La misión de nuestra empresa es convertirse y concentrarse en ser uno de los mejores aplicativos de servicios para mascotas con un sistema inteligente y geolocalización para personas que se encuentran sin tiempo por los estudios o el trabajo. Así tu mascota recibirá mucho amor y no estará sola.</p>
-				<a href="https://www.figma.com/proto/3UYPdaLTBNq9SibfRtYQeH/WEB%2FMOBILE?node-id=99-57" class="btn">Saber más</a>
+				<button (click)="linkExterno()" class="btn">Saber más</button>
 			</div>
 			<img src="assets/img/mujerconperro.jpg" alt="Imagen de una mujer con su perro">
         </section>
