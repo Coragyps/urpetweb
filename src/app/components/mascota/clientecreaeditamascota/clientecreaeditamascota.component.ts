@@ -14,6 +14,8 @@ import { MascotaService } from '../../../services/mascota.service';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { MatRadioModule } from '@angular/material/radio';
 import { Observable, map, startWith } from 'rxjs';
+import { LoginService } from '../../../services/login.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-clientecreaeditamascota',
@@ -28,6 +30,8 @@ export class ClientecreaeditamascotaComponent implements OnInit{
   edicion: boolean = false
   razasFiltradas!: Observable<string[]>
   id:number=0
+  username:string=''
+  idusuario:number=0
 
   tamanosDisponibles = [
     { value: 'ENANO', viewValue: 'Muy Pequeño' },
@@ -43,11 +47,18 @@ export class ClientecreaeditamascotaComponent implements OnInit{
     private mS:MascotaService,
     private router: Router,
     private formBuilder: FormBuilder,
+    private loginService:LoginService,
+    private uS: UsuarioService, 
     private route:ActivatedRoute,
     private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
+    const userData = this.loginService.showUserData();
+    this.username = userData.username;
+    this.uS.getUserByUsername(this.username).subscribe((userDetails) => {
+      this.idusuario = userDetails.usuarioId;})
+    
     this.route.params.subscribe((data: Params)=>{
       this.id=data['id']
       this.edicion=data['id'] != null
@@ -81,7 +92,7 @@ export class ClientecreaeditamascotaComponent implements OnInit{
       this.mascota.mascotaSexo=this.form.value.sexo
       this.mascota.mascotaTamaño=this.form.value.tamano
       this.mascota.mascotaHabilitado=this.form.value.habilitado
-      this.mascota.usuario.usuarioId=this.form.value.usuario
+      this.mascota.usuario.usuarioId=this.idusuario
       if (!this.form.value.foto) {this.mascota.mascotaFoto = 'assets/res/petpic.jpg';}
       this.mS.insert(this.mascota).subscribe((data)=>{
         this.mS.list().subscribe((data)=>{
@@ -90,7 +101,7 @@ export class ClientecreaeditamascotaComponent implements OnInit{
         })
       })
     }
-    this.router.navigate(['mascotas'])
+    this.router.navigate(['mascotas/mias'])
   }
 
   init(): void {

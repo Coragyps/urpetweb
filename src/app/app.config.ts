@@ -4,6 +4,7 @@ import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/c
 import { JwtModule } from '@auth0/angular-jwt';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideCharts, withDefaultRegisterables } from "ng2-charts";
 
 export function tokenGetter() {
   return sessionStorage.getItem('token');
@@ -14,6 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideAnimationsAsync(),
     provideHttpClient(withFetch(), withInterceptorsFromDi()), 
+    provideCharts(withDefaultRegisterables()),
     importProvidersFrom(
       JwtModule.forRoot({
         config: {
@@ -22,6 +24,7 @@ export const appConfig: ApplicationConfig = {
           disallowedRoutes: ['http://localhost:8081/login/forget'],
         }
       })
-    )
+    ),
+    provideAnimationsAsync(), provideCharts(withDefaultRegisterables()),
   ]
 };

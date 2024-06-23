@@ -23,6 +23,8 @@ import { RegistroComponent } from './components/usuario/registro/registro.compon
 import { PaseadoresComponent } from './components/usuario/paseadores/paseadores.component';
 import { ClientecreaeditamascotaComponent } from './components/mascota/clientecreaeditamascota/clientecreaeditamascota.component';
 import { ClientelistarmascotaComponent } from './components/mascota/clientelistarmascota/clientelistarmascota.component';
+import { PersonalComponent } from './components/billetera/personal/personal.component';
+import { BusquedaComponent } from './components/paseador/busqueda/busqueda.component';
 export const routes: Routes = [
 	{
 		path: '',
@@ -40,7 +42,8 @@ export const routes: Routes = [
     path: 'billeteras', component:BilleteraComponent,
     children:[
       {path:'crear',component:CreaeditabilleteraComponent},
-      {path:'editar/:id',component: CreaeditabilleteraComponent}
+      {path:'editar/:id',component: CreaeditabilleteraComponent},
+      {path:'balance', component:PersonalComponent}
     ],
     canActivate: [segGuard],
   },
@@ -56,7 +59,8 @@ export const routes: Routes = [
     path: 'paseadores', component:PaseadorComponent,
     children:[
       {path:'crear',component:CreaeditapaseadorComponent},
-      {path:'editar/:id',component: CreaeditapaseadorComponent}
+      {path:'editar/:id',component: CreaeditapaseadorComponent},
+      {path:'busqueda', component: BusquedaComponent}
     ],
     canActivate: [segGuard],
   },

@@ -45,7 +45,7 @@
 				</mat-select>
 			</mat-form-field>
 
-			<mat-form-field appearance="outline">
+			<mat-form-field *ngIf="edicion" appearance="outline">
 				<mat-label>usuario</mat-label>
 				<input matInput formControlName="usuario" readonly>
 			</mat-form-field>

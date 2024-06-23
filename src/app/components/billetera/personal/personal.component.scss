@@ -1,0 +1,17 @@
+section{
+	display: flex;
+	flex-direction: column;
+	.example-card{
+		margin-left: auto;
+		margin-right: auto;
+		width: 400px;
+		padding: 180px 20px;
+		border-radius: 0 0 30px 30px;
+		
+		mat-card-title{
+			font-size: 50px;
+			font-weight: 900;
+			padding: 20px 0px;
+		}
+	}
+}

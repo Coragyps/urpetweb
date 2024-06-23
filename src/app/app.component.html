@@ -54,6 +54,12 @@
 					<span class="texto" *ngIf="colapsado">Billeteras</span>
 				</a>
 			</li>
+			<li class="item" *ngIf="isCliente()">
+				<a matRipple class="enlace" routerLink="/billeteras/balance" matTooltip="Mi Billetera" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
+					<mat-icon>attach_money</mat-icon>
+					<span class="texto" *ngIf="colapsado">Mi Billetera</span>
+				</a>
+			</li>
 			<li class="item" *ngIf="isAdmin()">
 				<a matRipple class="enlace" routerLink="/membresias" matTooltip="Membresias" [matTooltipPosition]="'right'" [matTooltipDisabled]="colapsado">
 					<mat-icon>card_membership</mat-icon>

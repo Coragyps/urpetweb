@@ -37,4 +37,8 @@ export class BilleteraService {
   eliminar(id:number){
     return this.httpClient.delete(`${this.url}/${id}`)
   }
+
+  balance(id:number){
+    return this.httpClient.get<Billetera>(`${this.url}/actual?id=${id}`)
+  }
 }
