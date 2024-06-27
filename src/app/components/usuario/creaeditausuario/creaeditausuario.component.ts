@@ -56,10 +56,12 @@ export class CreaeditausuarioComponent implements OnInit{
   aceptar(): void {
     if (this.form.valid) {
       const username = this.form.value.usuario;
+      this.form.disable();
       this.uS.existsByUsername(username).subscribe((exists: boolean) => {
         if (exists && !this.edicion) {
           this.form.controls['usuario'].setErrors({ usernameTaken: true });
           this.snackBar.open('El nombre de usuario ya está en uso', '', { duration: 3000 });
+          this.form.enable();
         } else {
           this.usuario.usuarioId = this.form.value.codigo;
           this.usuario.username = this.form.value.usuario;
@@ -70,13 +72,17 @@ export class CreaeditausuarioComponent implements OnInit{
           this.usuario.usuarioCorreo = this.form.value.correo;
           this.usuario.usuarioFoto = this.form.value.foto;
           if (!this.form.value.foto) {this.usuario.usuarioFoto = 'assets/res/userpic.jpg';}
+          console.log(this.usuario)
           this.uS.insert(this.usuario).subscribe(() => {
             this.uS.list().subscribe((data) => {
               this.uS.setList(data);
               if (this.edicion) {this.snackBar.open('Se modificó el Registro', '', { duration: 3000 })}
             });
+            this.router.navigate(['usuarios']);
+          }, error => {
+            this.snackBar.open('Ocurrio un Error', 'OK', { duration: 3000 });
+            this.form.enable();
           });
-          this.router.navigate(['usuarios']);
         }
       });
     }
